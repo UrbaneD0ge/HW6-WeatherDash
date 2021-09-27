@@ -1,0 +1,42 @@
+:root {
+    --bg: #1b56c2;
+    --acct: #ffffff;
+    --sun: rgb(255, 237, 73);
+    --cld: rgb(79, 82, 99);
+}
+
+* {
+    box-sizing: border-box;
+  }
+
+  body {
+      background-color: var(--cld);
+  }
+
+  /* CARDS */
+.card {
+
+    margin: 0 0 20px 0;
+    border: 3px solid var(--acct);
+    border-radius: var(--border-radius);
+    width: 25%;
+  }
+  
+  .card-header {
+    color: var(--primary);
+    background-color: var(--dark);
+    padding: 2.5%;
+    border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
+  }
+  
+  .card-body {
+    padding: 2.5%;
+  }
+
+  .col-12 {
+    flex: 0 0 100%;
+  }
+
+  #dash {
+      color: var(--sun);
+  }
