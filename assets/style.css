@@ -14,7 +14,8 @@
   }
 
   header {
-      background-color: tomato;
+      background-color: rgba(255, 99, 71, 0.575);
+      min-height: 20vh;
   }
 
 .btn {
@@ -29,28 +30,42 @@
     border: 3px solid var(--acct);
     border-radius: var(--border-radius);
     width: 25%;
-  }
-  
-  .card-body {
-    padding: 1.5%;
-    border-radius: 5%;
-  }
+}
 
-  .form-label {
-    font-size: 1.2rem;
-    margin: 0 0 0 5px;
-  }
-  
-  .form-input {
-    width: 100%;
-    padding: 3%;
-    margin: 5px 0;
-    font-size: 1.2rem;
-    border: 2px solid var(--light-dark);
-    border-radius: var(--border-radius);
-  }
+.card-body {
+padding: 1.5%;
+border-radius: 5%;
+}
+
+.form-label {
+font-size: 1.2rem;
+margin: 0 0 0 5px;
+}
+
+.form-input {
+width: 100%;
+padding: 3%;
+margin: 5px 0;
+font-size: 1.2rem;
+border: 2px solid;
+border-radius: 5px;
+}
+
+.weatherCards {
+    background-color: tomato;
+    width: repeat(5, 1fr);
+    min-width: 20vw;
+    min-height: 20vh;
+    display: none;
+}
 
   #dash {
       color: var(--sun);
       font-style: italic;
+  }
+
+  .flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
