@@ -1,6 +1,6 @@
 :root {
-    --bg: #1b56c2;
-    --acct: #ffffff;
+    --wt: #white;
+    --acct: rgba(106, 140, 190, 0.548);
     --sun: rgb(255, 237, 73);
     --cld: rgb(79, 82, 99);
 }
@@ -14,8 +14,12 @@
   }
 
   header {
-      background-color: rgba(255, 99, 71, 0.575);
+      background-color: var(--acct);
+      border: 3px, solid, var(--wt);
       min-height: 20vh;
+      border-radius: 20px;
+      margin: 1vw;
+      padding: 1vw;
   }
 
 .btn {
@@ -26,7 +30,7 @@
 
   /* CARDS */
 .card {
-    margin: 0 0 20px 0;
+    margin: 20px;
     border: 3px solid var(--acct);
     border-radius: var(--border-radius);
     width: 25%;
