@@ -14,23 +14,55 @@
         <p>Get the weather in your city!</p>
     </header>
 
-<main class="flex-row col-md-4">
-    <div class="card card-body">
-        <h3 class="card-header">
-            Search By City
-        </h3>
-        <form  id="letsGeo" class="card-body">
-            <label class="form-label" for="username">City</label>
-            <input name="location" id="geo" type="text" autofocus="true" class="form-input"/>
-        <button type="submit" class="btn">Get Weather</button>
-        </form>
-    </div>
-    <div class="weatherCards">
-        <div class="card" id="card-container">
+<main class="container-fluid" style="max-width: 1400px">
+    <div class="row" >
+            <aside class="col-lg-3 pb-3 card card-body">
+                <h3 id="form-heading" class="mt-1 h3 form-label">
+                    Search By City
+                </h3>
+                <form id="search-form" class="form">
+                    <div class="form-inline form-group">
+                      <div class="input-group">
+                        <input
+                          class="form-input weather-search"
+                          type="text"
+                          id="search-input"
+                          placeholder="Ex: Atlanta, GA USA"
+                          aria-labelledby="form-heading"
+                          aria-controls="today's forecast"
+                        />
+                        <div class="input-group-append">
+                          <button
+                            type="submit"
+                            class="btn search-button"
+                            id="search-button"
+                            aria-label="submit search"
+                          >
+                            Search
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                <div class="list-group" id="history"></div>
+            </aside>
 
+          <div class="col-lg-9 pb-3">
+            <section
+              id="today"
+              class="mt-3"
+              role="region"
+              aria-live="polite"
+            ></section>
+            <section
+              id="forecast"
+              class="row mt-3"
+              role="region"
+              aria-live="polite"
+            ></section>
+          </div>
         </div>
-    </div>
-  </div>
+
 </main>
 
     <!-- use day.js to easily format dates -->
@@ -49,7 +81,6 @@
       integrity="sha512-pslqxxHAYPCxaSeFSmXXxDkLejD5dbFVC66aiVq0z4v7VTJBU+wqcG1OpNh4p3MjS2D6NCwz/H2QmSc7dXxryg==" 
       crossorigin="anonymous"
     ></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="./assets/script.js"></script>
 </body>
 </html>

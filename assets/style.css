@@ -55,6 +55,13 @@ border: 2px solid;
 border-radius: 5px;
 }
 
+.five-day-card {
+    /* background-color: var(--acct); */
+    position: relative;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
 .weatherCards {
     background-color: tomato;
     width: repeat(5, 1fr);
@@ -66,6 +73,10 @@ border-radius: 5px;
   #dash {
       color: var(--sun);
       font-style: italic;
+  }
+
+  #forecast {
+      display: flex;
   }
 
   .flex-row {
