@@ -23,7 +23,7 @@ function renderSearchHistory() {
     var btn = document.createElement('button');
     btn.setAttribute('type', 'button');
     btn.setAttribute('aria-controls', 'today forecast');
-    btn.classList.add('history-btn', 'btn-history');
+    btn.classList.add('history-btn', 'btn-history', 'btn-sm', 'btn');
 
     // `data-search` allows access to city name when click handler is invoked
     btn.setAttribute('data-search', searchHistory[i]);
@@ -139,9 +139,10 @@ function renderForecastCard(forecast, timezone) {
   cardBody.append(cardTitle, weatherIcon, tempEl, windEl, humidityEl);
 
   col.setAttribute('class', 'col-md');
-  col.classList.add('five-day-card');
+  col.classList.add('weatherCards');
   card.setAttribute('class', 'card bg-primary h-100 text-white');
   cardBody.setAttribute('class', 'card-body p-2');
+  cardBody.classList.add('forecastCard');
   cardTitle.setAttribute('class', 'card-title');
   tempEl.setAttribute('class', 'card-text');
   windEl.setAttribute('class', 'card-text');
@@ -167,7 +168,7 @@ function renderForecast(dailyForecast, timezone) {
   var headingCol = document.createElement('div');
   var heading = document.createElement('h4');
 
-  headingCol.setAttribute('class', 'col-12');
+  headingCol.setAttribute('class', 'col-8');
   heading.textContent = '5-Day Forecast:';
   headingCol.append(heading);
 
@@ -191,12 +192,13 @@ function renderItems(city, data) {
 
 // Fetches weather data for given location from the Weather Geolocation
 // endpoint; then, calls functions to display current and forecast weather data.
-function fetchWeather(location) {
+function meteo(location) {
   var { lat } = location;
   var { lon } = location;
   var city = location.name;
   var apiUrl = `${weatherApiRootUrl}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${weatherApiKey}`;
-
+  
+  // Weather call
   fetch(apiUrl)
     .then(function (res) {
       return res.json();
@@ -205,13 +207,14 @@ function fetchWeather(location) {
       renderItems(city, data);
     })
     .catch(function (err) {
-      console.error(err);
+      console.error(err); 
     });
 }
 
-function fetchCoords(search) {
+function geo(search) {
   var apiUrl = `${weatherApiRootUrl}/geo/1.0/direct?q=${search}&limit=5&appid=${weatherApiKey}`;
 
+  // Geo call
   fetch(apiUrl)
     .then(function (res) {
       return res.json();
@@ -221,7 +224,7 @@ function fetchCoords(search) {
         alert('Location not found');
       } else {
         appendToHistory(search);
-        fetchWeather(data[0]);
+        meteo(data[0]);
       }
     })
     .catch(function (err) {
@@ -237,19 +240,19 @@ function handleSearchFormSubmit(e) {
 
   e.preventDefault();
   var search = searchInput.value.trim();
-  fetchCoords(search);
+  geo(search);
   searchInput.value = '';
 }
 
 function handleSearchHistoryClick(e) {
-  // Don't do search if current elements is not a search history button
+  // Don't do search if current element is not a search history button
   if (!e.target.matches('.btn-history')) {
     return;
   }
 
   var btn = e.target;
   var search = btn.getAttribute('data-search');
-  fetchCoords(search);
+  geo(search);
 }
 
 initSearchHistory();
