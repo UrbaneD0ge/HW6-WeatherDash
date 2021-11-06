@@ -221,7 +221,7 @@ function geo(search) {
     })
     .then(function (data) {
       if (!data[0]) {
-        alert('Location not found');
+        alert('Unable to get geo data from OpenWeather');
       } else {
         appendToHistory(search);
         meteo(data[0]);
